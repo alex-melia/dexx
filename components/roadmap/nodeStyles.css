@@ -1,0 +1,19 @@
+.small-node {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  padding: none;
+  width: 100px;
+  height: 20px;
+}
+
+.custom-handle {
+  background: transparent !important;
+  border: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

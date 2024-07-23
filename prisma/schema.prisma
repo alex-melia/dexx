@@ -1,0 +1,100 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id String @id @default(cuid())
+  email String @unique
+  password String
+  name String?
+  image String?
+  initialised Boolean @default(false)
+  created_at DateTime  @default(now()) @map(name: "created_at")
+  updated_at DateTime  @default(now()) @map(name: "updated_at")
+
+  decks Deck[]
+  roadmaps Roadmap[]
+}
+
+model Roadmap {
+  id        String   @id @default(cuid())
+  title     String
+  image     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user_id   String
+  user      User @relation(fields: [user_id], references: [id])
+
+  topics    Topic[]
+}
+
+model Topic {
+  id          String  @id @default(cuid())
+  title       String
+  roadmapId   String
+  isCompleted Boolean @default(false)
+
+  Roadmap Roadmap @relation(fields: [roadmapId], references: [id])
+
+  subtopics Subtopic[]
+}
+
+model Subtopic {
+  id          String  @id @default(cuid())
+  title       String
+  topicId     String
+  isCompleted Boolean @default(false)
+
+  Topic Topic @relation(fields: [topicId], references: [id])
+
+  resources Resource[]
+}
+
+model Resource {
+  id         String @id @default(cuid())
+  name       String
+  url        String
+  subtopicId String
+
+  Subtopic Subtopic @relation(fields: [subtopicId], references: [id])
+}
+
+model Deck {
+  id    String @id @default(cuid())
+  title String
+  user_id String
+  image String?
+  user User @relation(fields: [user_id], references: [id])
+
+  cards Card[]
+}
+
+model Card {
+  id       String @id @default(cuid())
+  deck_id  String
+  question String
+  answer   String
+  rating   Rating?
+  reviewedAt DateTime? @default(now())
+  nextReviewDate DateTime? @default(now())
+
+  Deck Deck @relation(fields: [deck_id], references: [id])
+}
+
+enum Rating {
+  VERY_EASY
+  EASY
+  HARD
+  VERY_HARD
+}
