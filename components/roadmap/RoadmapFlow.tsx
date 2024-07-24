@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 
 import "reactflow/dist/style.css"
 import { useMemo } from "react"
