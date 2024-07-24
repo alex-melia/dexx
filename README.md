@@ -1,4 +1,6 @@
+[![dexxheader](https://github.com/user-attachments/assets/c992c235-d73e-4243-8c0a-83d8e741062d)](https://dexx-drab.vercel.app/)
 # Dexx - AI Flashcard & Roadmap Tool
+
 
 ## Introduction
 
