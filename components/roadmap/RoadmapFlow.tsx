@@ -1,4 +1,4 @@
-// "use client"
+"use client"
 
 import "reactflow/dist/style.css"
 import { useMemo } from "react"
@@ -11,8 +11,6 @@ interface RoadmapFlowProps {
 }
 
 export default function RoadmapFlow({ roadmap }: RoadmapFlowProps) {
-  console.log(roadmap)
-
   const nodeTypes = useMemo(
     () => ({
       topicNode: TopicNode,
