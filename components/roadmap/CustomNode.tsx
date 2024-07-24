@@ -30,7 +30,7 @@ interface TopicNodeProps {
   data: Topic
 }
 
-export async function TopicNode({ data }: TopicNodeProps) {
+export function TopicNode({ data }: TopicNodeProps) {
   return (
     <Button color="yellow" className="border-2 border-black rounded-md p-1">
       <p className="text-xs">{data.title}</p>
@@ -69,7 +69,7 @@ interface SubtopicNodeProps {
   data: Subtopic
 }
 
-export async function SubtopicNodeLeft({ data }: SubtopicNodeProps) {
+export function SubtopicNodeLeft({ data }: SubtopicNodeProps) {
   const router = useRouter()
 
   const handleComplete = async () => {
@@ -152,7 +152,7 @@ export async function SubtopicNodeLeft({ data }: SubtopicNodeProps) {
   )
 }
 
-export async function SubtopicNodeRight({ data }: SubtopicNodeProps) {
+export function SubtopicNodeRight({ data }: SubtopicNodeProps) {
   const router = useRouter()
 
   const handleComplete = async () => {
