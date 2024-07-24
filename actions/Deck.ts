@@ -159,6 +159,8 @@ export async function getDeck(deck_id: string) {
 export async function getUserDecks() {
   const session = await auth()
 
+  console.log(session?.user.id)
+
   try {
     const decks = await prisma.deck.findMany({
       where: {
