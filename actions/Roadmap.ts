@@ -255,6 +255,8 @@ export async function getUserRoadmaps() {
       },
     })
 
+    console.log(roadmaps)
+
     return roadmaps
   } catch (error) {
     return null
