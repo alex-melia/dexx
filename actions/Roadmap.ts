@@ -255,10 +255,16 @@ export async function getUserRoadmaps() {
       },
     })
 
+    if (!roadmaps) {
+      console.log("No roadmaps")
+    }
+
     console.log(roadmaps)
 
     return roadmaps
   } catch (error) {
+    console.log(error)
+
     return null
   }
 }
