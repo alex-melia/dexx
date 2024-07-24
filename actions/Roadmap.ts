@@ -231,11 +231,11 @@ export async function getRoadmap(roadmap_id: string) {
 export async function getUserRoadmaps() {
   const session = await auth()
 
+  console.log(session?.user.id)
+
   if (!session?.user) {
     return null
   }
-
-  console.log(session?.user.id)
 
   try {
     const roadmaps = await prisma.roadmap.findMany({
