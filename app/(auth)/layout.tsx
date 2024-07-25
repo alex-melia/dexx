@@ -2,6 +2,7 @@ import React from "react"
 import { auth } from "@/auth"
 
 import Navbar from "@/components/layout/Navbar"
+import { redirect } from "next/navigation"
 
 interface DashboardLayoutProps {
   children: React.ReactNode
@@ -9,6 +10,10 @@ interface DashboardLayoutProps {
 
 export default async function AuthLayout({ children }: DashboardLayoutProps) {
   const session = await auth()
+
+  if (session?.user) {
+    redirect("/dashboard")
+  }
 
   return (
     <div className="flex flex-col min-h-screen">
