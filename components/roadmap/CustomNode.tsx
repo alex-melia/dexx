@@ -126,7 +126,7 @@ export function SubtopicNodeLeft({ data }: SubtopicNodeProps) {
             </ContextMenuTrigger>
           </DialogTrigger>
           <DialogContent>
-            <div>
+            <>
               <DialogTitle>{data.title}</DialogTitle>
               <DialogDescription>
                 This is a test description which will be updated later.
@@ -139,7 +139,15 @@ export function SubtopicNodeLeft({ data }: SubtopicNodeProps) {
                   </a>
                 ))}
               </div>
-            </div>
+              <Button
+                className="bg-blue-500 hover:bg-blue-600 w-fit"
+                onClick={() => handleComplete()}
+              >
+                {!data.isCompleted
+                  ? "Mark as Completed"
+                  : "Mark as Uncompleted"}
+              </Button>
+            </>
           </DialogContent>
         </Dialog>
         <ContextMenuContent>

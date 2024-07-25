@@ -41,7 +41,7 @@ export default function ReviewDeck({ deck, reviewCards }: ReviewDeckProps) {
   }, [cards.length, router])
 
   return cards.length ? (
-    <div className="min-w-[800px]">
+    <div className="max-w-[800px] w-full">
       <div className="flex flex-col items-center w-full h-full">
         <Progress
           color="blue"
@@ -53,7 +53,7 @@ export default function ReviewDeck({ deck, reviewCards }: ReviewDeckProps) {
             onClick={() => setIsFlipped(!isFlipped)}
             className="flex justify-center items-center border rounded-xl shadow-md border-lg max-w-[800px] min-h-[200px] w-full"
           >
-            <p className="font-semibold text-center text-2xl">
+            <p className="font-semibold text-center text-lg sm:text-2xl">
               {!isFlipped
                 ? cards[currentIndex].question
                 : cards[currentIndex].answer}
